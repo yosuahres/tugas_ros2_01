@@ -7,6 +7,9 @@ import math
 import time
 import mediapipe as mp
 
+#lib message
+from tugas1_msgs.msg import HandResult
+
 class handDetector:
     def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5):
         self.mode = mode
@@ -169,6 +172,9 @@ class Mediapipe(Node):
         self.detector = handDetector()
         self.pTime = 0
         self.get_logger().info('get logger initialized')
+        self.hand_result_pub = self.create_publisher(HandResult, 'hand_direction', 10)
+        # publish processed image
+        self.image_pub = self.create_publisher(Image, 'mediapipe/image', 10)
 
     def listener_callback(self, data):
         self.get_logger().info('get logger receiving video frame')
@@ -176,9 +182,31 @@ class Mediapipe(Node):
         
         img = cv2.flip(current_frame, 1)
 
-        img = self.detector.findHands(img, draw=False) 
-        lmList, bbox = self.detector.findPosition(img, draw=False) 
+        img_with_hands = self.detector.findHands(img, draw=True) 
+        lmList, bbox = self.detector.findPosition(img_with_hands, draw=True) 
         handSide = self.detector.detectHandSide()
+
+        # message
+        direction = ""
+        if self.detector.isUp():
+            direction = "up"
+        elif self.detector.isDown():
+            direction = "down"
+        elif self.detector.isLeft():
+            direction = "left"
+        elif self.detector.isRight():
+            direction = "right"
+        else:
+            direction = "none"
+
+        # publish direction
+        msg = HandResult()
+        msg.arahtangan = direction
+        self.hand_result_pub.publish(msg)
+
+        # publish processed image
+        img_msg = self.br.cv2_to_imgmsg(img_with_hands, encoding="bgr8")
+        self.image_pub.publish(img_msg)
 
 
 def main(args=None):
