@@ -215,7 +215,3 @@ def main(args=None):
     rclpy.spin(mediapipe_node)
     mediapipe_node.destroy_node()
     rclpy.shutdown()
-    mediapipe_node = Mediapipe()
-    rclpy.spin(mediapipe_node)
-    mediapipe_node.destroy_node()
-    rclpy.shutdown()
