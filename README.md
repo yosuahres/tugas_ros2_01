@@ -21,6 +21,8 @@ Fernando|5025231091|Robotika (T)|
 mkdir -p robot_ws/src && cd robot_ws/src
 git clone https://github.com/yosuahres/tugas_ros2_01.git
 cd ../..
-colcon build 
+colcon build --packages-select robot2025_msgs
+source install/setup.bash ## or .zsh if using zsh terminal
+colcon build --packages-select robot2025_mediapipe
 source install/setup.bash ## or .zsh if using zsh terminal
 ```
