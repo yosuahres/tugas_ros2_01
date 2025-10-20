@@ -11,7 +11,7 @@
 # Tugas 1 Robotika - ROS2
 
 ## Link Demo:
-
+[Video Demo](https://drive.google.com/file/d/1ii1GfZ3U7n-s3BWm-agACutXsV3ozUOK/view?usp=drive_link)
 
 ## Quick Setup 
 
