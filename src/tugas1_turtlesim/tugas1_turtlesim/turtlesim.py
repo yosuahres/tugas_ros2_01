@@ -51,7 +51,6 @@ def main(args=None):
     mediapipe_node = Turtlesim()
     rclpy.spin(mediapipe_node)
     
-    cv2.destroyAllWindows()
     mediapipe_node.destroy_node()
     rclpy.shutdown()
 
