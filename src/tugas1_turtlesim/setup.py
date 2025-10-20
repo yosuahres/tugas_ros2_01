@@ -11,7 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools', 'tugas1_msgs'],
+    install_requires=['setuptools', 'tugas1_msgs', 'cv_bridge'],
     zip_safe=True,
     maintainer='mob',
     maintainer_email='fernando142311@gmail.com',
