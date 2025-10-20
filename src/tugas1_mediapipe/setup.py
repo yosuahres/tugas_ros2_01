@@ -20,6 +20,7 @@ setup(
     entry_points={
         'console_scripts': [
             'mediapipe = tugas1_mediapipe.mediapipe:main',
+            'camera_publisher = tugas1_mediapipe.camerapub:main'
             # contoh: 'node_name = tugas1_mediapipe.node:main',
         ],
     },
