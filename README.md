@@ -20,7 +20,15 @@
 ```sh
 mkdir -p robot_ws/src && cd robot_ws/src
 git clone https://github.com/yosuahres/tugas_ros2_01.git
-cd ../..
+cd ..
+source /opt/ros/humble/setup.bash
 colcon build --packages-select tugas1_msgs tugas1_mediapipe tugas1_turtlesim
-source install/setup.bash ## or .zsh if using zsh terminal
+source install/setup.bash 
+ros2 run tugas1_mediapipe camera_publisher 
+
+source install/setup.bash ## beda terminal
+ros2 run tugas1_mediapipe mediapipe
+
+source install/setup.bash ## beda terminal
+ros2 run tugas1_turtlesim turtle
 ```

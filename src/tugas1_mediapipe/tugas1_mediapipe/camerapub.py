@@ -5,10 +5,10 @@ from cv_bridge import CvBridge
 import cv2
 
 class CameraPublisher(Node):
-    def _init_(self):
-        super()._init_('camera_publisher')
+    def __init__(self):  
+        super().__init__('camera_publisher') 
         self.publisher_ = self.create_publisher(Image, '/camera/image_raw', 10)
-        self.timer = self.create_timer(0.1, self.timer_callback) # 10 Hz
+        self.timer = self.create_timer(0.1, self.timer_callback)  # 10 Hz
         self.cap = cv2.VideoCapture(0)
         self.br = CvBridge()
         self.get_logger().info('initialize')
@@ -28,3 +28,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
